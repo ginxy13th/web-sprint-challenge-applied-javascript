@@ -28,8 +28,8 @@ function Header() {
         temp.textContent = '98*';
         header.appendChild(temp);
 
-        let headerContainer = document.querySelector('.header-container')
-        headerContainer.appendChild(header);
-    return headerContainer
+    return header
 }
-console.log(Header())
+// console.log(Header())
+        let headerContainer = document.querySelector('.header-container')
+        headerContainer.appendChild(Header());
