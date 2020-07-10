@@ -23,7 +23,7 @@
 //{articles:{javascript:[{article1: headline, authorphoto, authorname}]}}
 
 function cardMaker(object){
-    console.log(object)
+    // console.log(object)
 // object.forEach(obj =>{
     for(let i =0; i < object.length; i++){
     let card = document.createElement('div');
@@ -47,6 +47,11 @@ function cardMaker(object){
 
     let cardsContainer = document.querySelector('.cards-container');
     cardsContainer.appendChild(card);
+
+    
+    card.addEventListener('click',() =>{
+      console.log(object[i].headline)
+    })
 
     return cardsContainer;
 }
