@@ -20,3 +20,58 @@
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
+//{articles:{javascript:[{article1: headline, authorphoto, authorname}]}}
+
+function cardMaker(object){
+    // console.log(object)
+object.forEach(obj =>{
+    //  for(let i =0; i < object.length; i++){
+    let card = document.createElement('div');
+    card.classList.add('card')
+        let headline = document.createElement('div');
+        headline.classList.add('headline');
+        headline.textContent = obj.headline
+        card.appendChild(headline);
+        let author = document.createElement('div');
+        author.classList.add('author');
+        card.appendChild(author);
+            let imgContainer = document.createElement('div');
+            imgContainer.classList.add('img-container');
+            author.appendChild(imgContainer);
+                let img = document.createElement('img');
+                img.src= obj.authorPhoto;
+                imgContainer.appendChild(img);
+            let name = document.createElement('span');
+            name.textContent = `By ${obj.authorName}`;
+            author.appendChild(name);
+
+ let cardsContainer = document.querySelector('.cards-container');
+    cardsContainer.appendChild(card);
+    
+    card.addEventListener('click',() =>{
+      console.log(obj.headline)
+    })
+return cardsContainer;
+}
+)}
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(response => {
+   let bootstrap = response.data.articles.bootstrap
+   console.log(bootstrap)
+   let javascript = response.data.articles.javascript
+   let jquery = response.data.articles.jquery
+   let node = response.data.articles.node
+   let technology = response.data.articles.technology
+   
+   
+   cardMaker(bootstrap);
+   cardMaker(javascript);
+   cardMaker(jquery);
+   cardMaker(node);
+   cardMaker(technology);
+})
+
+.catch(error => {
+    console.log('error:', error)})
+    
